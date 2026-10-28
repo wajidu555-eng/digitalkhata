@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #F6F5F0;
+  --foreground: #14201E;
+  --primary: #0F4C45;
+  --primary-foreground: #FFFFFF;
+  --secondary: #E8EFEC;
+  --secondary-foreground: #14302C;
+  --accent: #F2A93B;
+  --accent-foreground: #3A2500;
+  --muted: #EEECE4;
+  --muted-foreground: #5F6B68;
+  --card: #FFFFFF;
+  --card-foreground: #14201E;
+  --border: #DEDBCF;
+  --input: #D5D2C5;
+  --ring: #0F4C45;
+  --radius: 0.625rem;
+  --font-sans: var(--font-plus-jakarta-sans);
+  --success: #1F7A4D;
+  --success-foreground: #FFFFFF;
+  --warning: #B7791F;
+  --warning-foreground: #FFFFFF;
+  --destructive: #B3261E;
+  --destructive-foreground: #FFFFFF;
+}
+
+@layer base {
+  * { box-sizing: border-box; border-color: var(--border); }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  html { scroll-behavior: smooth; }
+  h1, h2, h3, h4, h5, h6, p { margin: 0; }
+  [dir='rtl'] body { font-family: 'Noto Naskh Arabic', var(--font-sans), sans-serif; }
+}
+
+@layer utilities {
+  .tabular { font-variant-numeric: tabular-nums; }
+  .text-hero-xl { font-size: clamp(2rem, 3.2vw, 3rem); line-height: 1.1; }
+  .blob-primary {
+    background: radial-gradient(circle at 30% 30%, rgba(242,169,59,0.35), transparent 60%);
+    filter: blur(40px);
+  }
+  .grid-dots {
+    background-image: radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+  .fade-in { animation: fadeIn 220ms ease both; }
+  .modal-in { animation: modalIn 180ms ease both; }
+  .slide-up { animation: slideUp 220ms ease both; }
+  .pulse-flash { animation: flash 1.2s ease; }
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes flash { 0% { background-color: rgba(242,169,59,0.35); } 100% { background-color: transparent; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in, .modal-in, .slide-up, .pulse-flash { animation: none; }
+}
